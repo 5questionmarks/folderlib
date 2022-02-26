@@ -143,6 +143,7 @@ function FolderLib:File()
 		ItemsInFolder.Name = "ItemsInFolder"
 		ItemsInFolder.Parent = NewFolder
 		ItemsInFolder.AutomaticCanvasSize = Enum.AutomaticSize.Y
+		ItemsInFolder.ScrollBarImageColor3 = Color3.fromRGB(25,25,25)
 		ItemsInFolder.Active = true
 		ItemsInFolder.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 		ItemsInFolder.BorderSizePixel = 0
