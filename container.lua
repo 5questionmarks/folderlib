@@ -165,6 +165,67 @@ function FolderLib:File()
 		UIListLayout22.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout22.Padding = UDim.new(0, 2)
 		
+		function InnerFolder:CheckBox(CheckBoxTitle,callback)
+			callback = callback or function() end
+
+			local CheckBox = Instance.new("Frame")
+			local CheckBoxName = Instance.new("TextLabel")
+			local Toggle = Instance.new("ImageButton")
+
+			--Properties:
+
+			CheckBox.Name = "CheckBox"
+			CheckBox.Parent = ItemsInFolder
+			CheckBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+			CheckBox.BorderSizePixel = 0
+			CheckBox.Position = UDim2.new(0, 0, 0.369369358, 0)
+			CheckBox.Size = UDim2.new(0, 201, 0, 38)
+
+			CheckBoxName.Name = "CheckBoxName"
+			CheckBoxName.Parent = CheckBox
+			CheckBoxName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			CheckBoxName.BackgroundTransparency = 1.000
+			CheckBoxName.BorderSizePixel = 0
+			CheckBoxName.Position = UDim2.new(0.0350877196, 0, 0.179487184, 0)
+			CheckBoxName.Size = UDim2.new(0, 86, 0, 26)
+			CheckBoxName.Font = Enum.Font.GothamSemibold
+			CheckBoxName.Text = CheckBoxTitle
+			CheckBoxName.TextColor3 = Color3.fromRGB(255, 255, 255)
+			CheckBoxName.TextSize = 12.000
+			CheckBoxName.TextXAlignment = Enum.TextXAlignment.Left
+
+			Toggle.Name = "Toggle"
+			Toggle.Parent = CheckBox
+			Toggle.BackgroundColor3 = Color3.fromRGB(255, 72, 72)
+			Toggle.BorderSizePixel = 0
+			Toggle.Position = UDim2.new(0.865671635, 0, 0.284750283, 0)
+			Toggle.Size = UDim2.new(0, 16, 0, 17)
+			Toggle.Image = "rbxassetid://8885587362"
+			Toggle.ImageColor3 = Color3.fromRGB(255, 72, 72)
+
+			-- Scripts:
+
+			local function JUEWAU_fake_script() -- Toggle.ToggleManager 
+				local script = Instance.new('LocalScript', Toggle)
+
+				local Toggle = script.Parent
+				local IsTogglable = false
+				Toggle.MouseButton1Click:Connect(function()
+					if IsTogglable == false then
+						IsTogglable = true
+						local SetTrue = Color3.fromRGB(125, 255, 96)
+						game:GetService('TweenService'):Create(Toggle, TweenInfo.new(0.3), {ImageColor3 = SetTrue}):Play()
+					else
+						IsTogglable = false
+						local SetFalse = Color3.fromRGB(255,72,72)
+						game:GetService('TweenService'):Create(Toggle, TweenInfo.new(0.3), {ImageColor3 = SetFalse}):Play()
+					end
+					pcall(callback,IsTogglable)
+				end)
+			end
+			coroutine.wrap(JUEWAU_fake_script)()
+		end
+		
 		function InnerFolder:Slider(SliderTitle,maxvalue,minvalue,callback)
 			local Slider = Instance.new("Frame")
 			local SliderName = Instance.new("TextLabel")
