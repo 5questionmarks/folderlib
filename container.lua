@@ -1,5 +1,5 @@
 local FolderLib = {}
-function FolderLib:File()
+function FolderLib:File(scriptname)
 	print('lib created by jhayden.#9244')
 	local FolderMaker = {}
 	local FolderLib = Instance.new("ScreenGui")
@@ -36,7 +36,7 @@ function FolderLib:File()
 	TextLabel.BorderSizePixel = 0
 	TextLabel.Size = UDim2.new(0, 228, 0, 46)
 	TextLabel.Font = Enum.Font.GothamSemibold
-	TextLabel.Text = "Script Name"
+	TextLabel.Text = scriptname
 	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel.TextSize = 13.000
 	
